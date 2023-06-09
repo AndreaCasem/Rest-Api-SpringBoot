@@ -1,7 +1,10 @@
 package com.api.RegisterLogin.UsuarioController;
 
+import com.api.RegisterLogin.Dto.LoginDTO;
+import com.api.RegisterLogin.Response.LoginResponse;
 import com.api.RegisterLogin.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.api.RegisterLogin.Dto.UsuarioDTO;
 
@@ -21,6 +24,13 @@ public class UsuarioController {
     public String saveUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         String id = usuarioService.addUsuario(usuarioDTO);
         return id;
+    }
+
+    // Inicio de sesion
+    @PostMapping(path = "/login")
+    public ResponseEntity<?> loginUsuario(@RequestBody LoginDTO loginDTO) {
+        LoginResponse loginResponse = usuarioService.loginUsuario(loginDTO);
+        return ResponseEntity.ok(loginResponse);
     }
 
 

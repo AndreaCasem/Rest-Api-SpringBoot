@@ -7,8 +7,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfig {
+    /* Se configura un bean de Spring para codificar contraseñas
+    basado en el algoritmo bcrypt
+    */
     @Bean
     public PasswordEncoder passwordEncoder() {
+        
         return new BCryptPasswordEncoder();
     }
 }
